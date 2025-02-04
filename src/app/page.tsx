@@ -7,8 +7,8 @@ export default function Home() {
   const { state, dispatch } = useAppContext();
 
   return (
-    <div>
-      <main>
+    <main>
+      <div>
         <h1>메인 페이지</h1>
         <Counter />
         <div>
@@ -21,7 +21,7 @@ export default function Home() {
           />
           <p>현재 사용자: {state.user || "없음"}</p>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
