@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 
 interface State {
   count: number;
@@ -37,4 +37,11 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </AppContext.Provider>
   );
+};
+
+export const useAppContext = () => {
+  const context = useContext(AppContext);
+  if (!context)
+    throw new Error("useAppContext must be used within AppProvider");
+  return context;
 };
