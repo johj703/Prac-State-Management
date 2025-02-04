@@ -7,7 +7,10 @@ interface State {
   user: string | null;
 }
 
-type Action = { type: "INCREMENT" } | { type: "SET_USER"; payload: string };
+type Action =
+  | { type: "INCREMENT" }
+  | { type: "DECREMENT" }
+  | { type: "SET_USER"; payload: string };
 
 const initialState: State = {
   count: 0,
@@ -18,6 +21,8 @@ const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "INCREMENT":
       return { ...state, count: state.count + 1 };
+    case "DECREMENT":
+      return { ...state, count: Math.max(0, state.count - 1) };
     case "SET_USER":
       return { ...state, user: action.payload };
     default:
